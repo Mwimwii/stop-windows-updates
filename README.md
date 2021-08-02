@@ -1,4 +1,4 @@
-# Stop/Kill Windows Updates
+# Stop/Kill Windows 10 Updates
 
 ## Motivation
 
