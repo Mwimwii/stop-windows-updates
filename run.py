@@ -1,12 +1,11 @@
 # stop windows services that we dont like lol
 #
 import win32serviceutil
-import win32service
-
 import os
 import time
 import json
 
+EXIT = False
 
 with open('config.json') as f:
     data = json.load(f)
@@ -14,24 +13,16 @@ with open('config.json') as f:
 
 def start(service):
     win32serviceutil.StartService(service.get('name'))
-
     
 def stop(service):
     win32serviceutil.StopService(service.get('name'))
 
-# every 5 seconds stop the services
 
-EXIT = False
-
-def main():
-    while EXIT == False:
-        time.sleep(5)
-        os.system('cls')
-        run()
-        # get keyboard interupt
         
-
-def run():
+def stat():
+    ''' 
+        Every 5 seconds stop the services
+    '''
     try:
         for service in SERVICES:
             # create a switch case for each service
@@ -49,7 +40,14 @@ def run():
                 status = 'Running'
             else:
                 status = 'Stopped'
-            print(service.get('display_name') + ": " + status)
-
+            print(service.get('display_name') + ': ' + status)
+            
+def main():
+    while EXIT == False:
+        time.sleep(5)
+        os.system('cls')
+        stat()
+        
+        
 if __name__ == '__main__':
     main()
