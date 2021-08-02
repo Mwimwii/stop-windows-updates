@@ -1,0 +1,9 @@
+{
+    "SERVICES": [
+        {
+        "name":    "wuauserv",
+        "display_name": "Windows Update Agent Service",
+        "action": "stop"
+        }
+    ]
+}
