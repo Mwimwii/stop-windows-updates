@@ -19,7 +19,7 @@ def stop(service):
 
 
         
-def start():
+def stat():
     ''' 
         Every 5 seconds stop the services
     '''
@@ -46,7 +46,7 @@ def main():
     while EXIT == False:
         time.sleep(5)
         os.system('cls')
-        start()
+        stat()
         
         
 if __name__ == '__main__':
